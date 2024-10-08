@@ -17,7 +17,7 @@
     "linebreak-style": 0,
     "no-unused-vars": "error",
     "no-undef": "off",
-    "comma-dangle":"off",
+    "comma-dangle": "off",
     "semi": ["error", "never"],
     "import/extensions": [
       "error",
@@ -28,7 +28,8 @@
     ],
     "no-param-reassign": 0,
     "max-len": "off",
-    "brace-style": "off"
+    "brace-style": "off",
+    "no-case-declarations": "off"
   },
   "settings": {
     "import/resolver": {
