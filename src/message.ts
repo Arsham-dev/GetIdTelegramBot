@@ -9,12 +9,37 @@ const handleMessage = (Bot:Telegraf<Context<Update>>) => {
       switch (forwardOrigin.type) {
         case 'channel':
           const chat = forwardOrigin.chat as Chat.ChannelChat
-          await ctx.reply(`Channel ID: ${chat.id}\nChannel Title: ${chat.title}\nChannel Username: ${chat.username || null}`)
+          const channelReplyText = []
+          if (chat.id) {
+            channelReplyText.push(`Channel ID: ${chat.id}`)
+          }
+          if (chat.title) {
+            channelReplyText.push(`Channel Title: ${chat.title}`)
+          }
+          if (chat.username) {
+            channelReplyText.push(`Channel Username: ${chat.username}`)
+          }
+          await ctx.reply(channelReplyText.join('\n'))
           break
+
         case 'user':
           const user = forwardOrigin.sender_user
-          await ctx.reply(`User ID: ${user.id}\nUser Username: ${user.username || null}\nUser First Name: ${user.first_name || null}\nUser Last Name: ${user.last_name || null}`)
+          const userReplyText = []
+          if (user.id) {
+            userReplyText.push(`User ID: ${user.id}`)
+          }
+          if (user.username) {
+            userReplyText.push(`User Username: ${user.username}`)
+          }
+          if (user.first_name) {
+            userReplyText.push(`User First Name: ${user.first_name}`)
+          }
+          if (user.last_name) {
+            userReplyText.push(`User Last Name: ${user.last_name}`)
+          }
+          await ctx.reply(userReplyText.join('\n'))
           break
+
         case 'chat':
           const senderChat = forwardOrigin.sender_chat
           await ctx.reply(`Chat ID: ${senderChat.id}`)
