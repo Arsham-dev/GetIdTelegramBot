@@ -52,6 +52,24 @@ const handleMessage = (Bot:Telegraf<Context<Update>>) => {
       }
     }
   })
+
+  Bot.on('channel_post', async (ctx) => {
+    const message = ctx.text
+    if (message === '/start') {
+      const { chat } = ctx
+      const messageText = []
+      if (chat.id) {
+        messageText.push(`Channel ID: ${chat.id}`)
+      }
+      if (chat.title) {
+        messageText.push(`Channel Title: ${chat.title}`)
+      }
+      if (chat.username) {
+        messageText.push(`Channel Username: ${chat.username}`)
+      }
+      await ctx.reply(messageText.join('\n'))
+    }
+  })
 }
 
 export default handleMessage

@@ -5,18 +5,22 @@ const handleStart = (Bot:Telegraf<Context<Update>>) => {
   Bot.start(async (ctx) => {
     await ctx.reply('Hi , Welcome to get id bot')
     const message = []
-    if (ctx.from?.id) {
-      message.push(`Your ID: ${ctx.from.id}`)
+    const chat = ctx.from
+
+    if (chat?.id) {
+      message.push(`Your ID: ${chat.id}`)
     }
-    if (ctx.from?.username) {
-      message.push(`Your Username: ${ctx.from.username}`)
+    if (chat?.username) {
+      message.push(`Your Username: ${chat.username}`)
     }
-    if (ctx.from?.first_name) {
-      message.push(`Your First Name: ${ctx.from.first_name}`)
+    if (chat?.first_name) {
+      message.push(`Your First Name: ${chat.first_name}`)
     }
-    if (ctx.from?.last_name) {
-      message.push(`Your Last Name: ${ctx.from.last_name}`)
+    if (chat?.last_name) {
+      message.push(`Your Last Name: ${chat.last_name}`)
     }
+    console.log(chat)
+
     await ctx.reply(message.join('\n'))
   })
 }
