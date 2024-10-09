@@ -9,11 +9,11 @@ const handleMessage = (Bot:Telegraf<Context<Update>>) => {
       switch (forwardOrigin.type) {
         case 'channel':
           const chat = forwardOrigin.chat as Chat.ChannelChat
-          await ctx.reply(`Channel ID: ${chat.id}\nChannel Title: ${chat.title}\nChannel Username: ${chat.username}`)
+          await ctx.reply(`Channel ID: ${chat.id}\nChannel Title: ${chat.title}\nChannel Username: ${chat.username || null}`)
           break
         case 'user':
           const user = forwardOrigin.sender_user
-          await ctx.reply(`User ID: ${user.id}\nUser Username: ${user.username}\nUser First Name: ${user.first_name}\nUser Last Name: ${user.last_name}`)
+          await ctx.reply(`User ID: ${user.id}\nUser Username: ${user.username || null}\nUser First Name: ${user.first_name || null}\nUser Last Name: ${user.last_name || null}`)
           break
         case 'chat':
           const senderChat = forwardOrigin.sender_chat
