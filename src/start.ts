@@ -19,7 +19,6 @@ const handleStart = (Bot:Telegraf<Context<Update>>) => {
     if (chat?.last_name) {
       message.push(`Your Last Name: ${chat.last_name}`)
     }
-    console.log(chat)
 
     await ctx.reply(message.join('\n'))
   })
