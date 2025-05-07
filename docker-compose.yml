@@ -1,0 +1,5 @@
+services:
+  get-id-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
