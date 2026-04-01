@@ -52,7 +52,9 @@ const handleStart = (Bot: Telegraf<Context<Update>>) => {
         message = ''
     }
 
-    await ctx.reply(message)
+    await ctx.reply(message, {
+      parse_mode: 'Markdown'
+    })
   })
 }
 
