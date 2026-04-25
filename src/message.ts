@@ -1,7 +1,7 @@
-import { Context, Telegraf } from 'telegraf'
-import { Chat, Message, Update } from 'telegraf/typings/core/types/typegram'
+import { Chat, Message } from 'telegraf/typings/core/types/typegram'
+import { BotType } from './types'
 
-const handleMessage = (Bot: Telegraf<Context<Update>>) => {
+const handleMessage = (Bot: BotType) => {
   Bot.on('message', async (ctx) => {
     const message = ctx.message as Message.CommonMessage
     if (message.forward_origin) {

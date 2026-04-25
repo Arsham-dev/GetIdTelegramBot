@@ -1,7 +1,7 @@
-import { Context, Telegraf } from 'telegraf'
-import { Chat, Update } from 'telegraf/typings/core/types/typegram'
+import { Chat } from 'telegraf/typings/core/types/typegram'
+import { BotType, MessageContext } from './types'
 
-const getUserMessage = (ctx: Context<Update>): string => {
+const getUserMessage = (ctx: MessageContext): string => {
   const message: string[] = []
   const chat = ctx.from
 
@@ -21,7 +21,7 @@ const getUserMessage = (ctx: Context<Update>): string => {
   return message.join('\n')
 }
 
-const getGroupMessage = (ctx: Context<Update>): string => {
+const getGroupMessage = (ctx: MessageContext): string => {
   const message: string[] = []
   const chat = ctx.chat as Chat.GroupChat | Chat.SupergroupChat
 
@@ -35,8 +35,8 @@ const getGroupMessage = (ctx: Context<Update>): string => {
   return message.join('\n')
 }
 
-const handleStart = (Bot: Telegraf<Context<Update>>) => {
-  Bot.start(async (ctx) => {
+const handleStart = (bot: BotType) => {
+  bot.start(async (ctx) => {
     let message = ''
 
     switch (ctx.chat.type) {

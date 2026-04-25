@@ -8,7 +8,6 @@
     "target": "ES2022",
     "removeComments": true,
     "sourceMap": false,
-    "baseUrl": "./src",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitAny": false,
@@ -17,9 +16,6 @@
     "noImplicitThis": true,
     "rootDir": "./src",
     "ignoreDeprecations": "5.0",
-    "paths": {
-      "*": ["node_modules/*", "src/types/*"]
-    },
     "typeRoots": ["./node_modules/@types", "./src/types"],
     "types": ["node"]
   },

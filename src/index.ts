@@ -6,9 +6,9 @@ import handleMessage from './message'
 config()
 
 const Main = async () => {
-  const Bot = new Telegraf(process.env.BOT_TOKEN!)
-  handleStart(Bot)
-  handleMessage(Bot)
-  Bot.launch()
+  const bot = new Telegraf(process.env.BOT_TOKEN!)
+  handleStart(bot)
+  handleMessage(bot)
+  bot.launch()
 }
 Main()
