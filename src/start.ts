@@ -2,7 +2,7 @@ import { Context, Telegraf } from 'telegraf'
 import { Chat, Update } from 'telegraf/typings/core/types/typegram'
 
 const getUserMessage = (ctx: Context<Update>): string => {
-  const message = []
+  const message: string[] = []
   const chat = ctx.from
 
   if (chat?.id) {
@@ -22,7 +22,7 @@ const getUserMessage = (ctx: Context<Update>): string => {
 }
 
 const getGroupMessage = (ctx: Context<Update>): string => {
-  const message = []
+  const message: string[] = []
   const chat = ctx.chat as Chat.GroupChat | Chat.SupergroupChat
 
   if (chat?.id) {

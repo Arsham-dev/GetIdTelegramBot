@@ -1,7 +1,7 @@
 import { Context, Telegraf } from 'telegraf'
 import { Chat, Message, Update } from 'telegraf/typings/core/types/typegram'
 
-const handleMessage = (Bot:Telegraf<Context<Update>>) => {
+const handleMessage = (Bot: Telegraf<Context<Update>>) => {
   Bot.on('message', async (ctx) => {
     const message = ctx.message as Message.CommonMessage
     if (message.forward_origin) {
@@ -9,7 +9,7 @@ const handleMessage = (Bot:Telegraf<Context<Update>>) => {
       switch (forwardOrigin.type) {
         case 'channel':
           const chat = forwardOrigin.chat as Chat.ChannelChat
-          const channelReplyText = []
+          const channelReplyText: string[] = []
           if (chat.id) {
             channelReplyText.push(`Channel ID: ${chat.id}`)
           }
@@ -24,7 +24,7 @@ const handleMessage = (Bot:Telegraf<Context<Update>>) => {
 
         case 'user':
           const user = forwardOrigin.sender_user
-          const userReplyText = []
+          const userReplyText: string[] = []
           if (user.id) {
             userReplyText.push(`User ID: ${user.id}`)
           }
@@ -45,7 +45,9 @@ const handleMessage = (Bot:Telegraf<Context<Update>>) => {
           await ctx.reply(`Chat ID: ${senderChat.id}`)
           break
         case 'hidden_user':
-          await ctx.reply('This message was forwarded from a user that has hidden their account')
+          await ctx.reply(
+            'This message was forwarded from a user that has hidden their account'
+          )
           break
         default:
           await ctx.reply('This message was forwarded from an unknown source')
@@ -57,7 +59,7 @@ const handleMessage = (Bot:Telegraf<Context<Update>>) => {
     const message = ctx.text
     if (message === '/start') {
       const { chat } = ctx
-      const messageText = []
+      const messageText: string[] = []
       if (chat.id) {
         messageText.push(`Channel ID: ${chat.id}`)
       }
