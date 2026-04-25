@@ -37,7 +37,6 @@ const getGroupMessage = (ctx: Context<Update>): string => {
 
 const handleStart = (Bot: Telegraf<Context<Update>>) => {
   Bot.start(async (ctx) => {
-    await ctx.reply('Hi , Welcome to get id bot')
     let message = ''
 
     switch (ctx.chat.type) {
