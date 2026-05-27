@@ -1,4 +1,4 @@
-FROM node:slim AS builder
+FROM node:24-slim AS builder
 
 WORKDIR /app
 
@@ -8,7 +8,7 @@ RUN yarn install
 COPY . ./
 RUN yarn build
 
-FROM node:slim
+FROM node:24-slim AS builder
 
 WORKDIR /app
 
