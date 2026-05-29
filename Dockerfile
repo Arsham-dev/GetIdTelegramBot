@@ -8,7 +8,7 @@ RUN yarn install
 COPY . ./
 RUN yarn build
 
-FROM node:24-slim AS builder
+FROM node:24-slim 
 
 WORKDIR /app
 
